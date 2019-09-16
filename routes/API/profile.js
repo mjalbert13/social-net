@@ -77,7 +77,7 @@ async (req, res) => {
     try{
         let profile = Profile.findOne({user: req.user.id});
 
-        if(profile){
+        if(profile) {
             //Update profile
             let profile = await Profile.findOneAndUpdate(
                 {user: req.user.id},
@@ -99,6 +99,39 @@ async (req, res) => {
     } catch(err){
         console.error(err.message)
         res.status(500).send({msg: "Server Error"})
+    }
+})
+
+//@route    Get api/profile/
+//@desc     Get all user profiles
+//@access   Public
+router.get('/', async (req, res)=> {
+
+    try{
+        const profiles = await Profile.find().populate('user', ['name', 'avatar'])
+        res.json(profiles)
+    } catch(err) {
+        console.error(err.message);
+        res.status(500).send('Server Error')
+    }
+})
+
+//@route    Get api/profile/
+//@desc     Get user profile by id
+//@access   Public
+router.get('/user/:user_id', async (req, res)=> {
+    try {
+        const profile = await Profile.findOne({user: req.params.user_id}).populate('user',['name', 'avatar'])
+
+        if(!profile) return res.status(400).json({ msg: "There is no profile for this user"})
+
+        res.json(profile)
+    } catch (err) {
+        console.error(err.message);
+        if(err.kind == 'ObjectId'){
+            return res.status(400).json({ msg: "There is no profile for this user"})
+        }
+        res.status(500).send("server Error")
     }
 })
 
