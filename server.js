@@ -18,18 +18,18 @@ app.use('/api/posts', require('./routes/API/post'))
 app.use('/api/auth', require('./routes/API/auth'))
 app.use('/api/profile', require('./routes/API/profile'))
 
-// if (process.env.NODE_ENV === 'production') {
-//     // Set static folder
-//     app.use(express.static('client/build'));
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static('client/build'));
   
-//     app.get('*', (req, res) => {
-//       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-//     });
-// }
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-  }
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static("client/build"));
+//   }
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, ()=>console.log(`Server started on p0rt: ${PORT}`))
