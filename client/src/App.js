@@ -3,10 +3,12 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './components/layouts/Navbar';
 import Landing from './components/layouts/Landing';
 import Register from './components/auth/Register';
+import PrivateRoute from './components/router/PrivateRoute'
+import Dashboard from './components/dashboard/Dashboard'
 import Login from './components/auth/Login';
 import Alert from './components/layouts/Alert';
 import {loadUser} from './actions/auth'
-import setAuthToken from './utils/setAuthToken'
+import setAuthToken from './utils/setAuthToken';
 import './App.css';
 // Import Redux
 import {Provider} from 'react-redux'
@@ -32,6 +34,7 @@ const App = () =>{
           <Switch>
             <Route exact path="/login" component={Login} />
             <Route exact path ="/register" component={Register}/>
+            <PrivateRoute exact path="/dashboard" component={Dashboard}/>
           </Switch>
         </section>
       </Fragment>
