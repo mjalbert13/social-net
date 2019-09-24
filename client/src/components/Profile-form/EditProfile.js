@@ -25,26 +25,6 @@ const Editprofile = ({
     instagram: "",
   });
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
-  const {
-    company,
-    website,
-    location,
-    status,
-    skills,
-    githubpage,
-    bio,
-    twitter,
-    facebook,
-    linkedin,
-    youtube,
-    instagram,
-  } = formData;
-  const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  const onSubmit = e => {
-    e.preventDefault();
-    createProfile(formData, history, true);
-  };
   
   useEffect(() => {
     getCurrentProfile();
@@ -64,6 +44,30 @@ const Editprofile = ({
       instagram: loading || !profile.social ? '' : profile.social.instagram
     });
   }, [loading, getCurrentProfile]);
+  
+  const {
+    company,
+    website,
+    location,
+    status,
+    skills,
+    githubpage,
+    bio,
+    twitter,
+    facebook,
+    linkedin,
+    youtube,
+    instagram,
+  } = formData;
+  
+  const onChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  
+    const onSubmit = e => {
+    e.preventDefault();
+    createProfile(formData, history, true);
+  };
+  
 
   return loading && profile === null ? (
     <Redirect to='/dashboard' />
