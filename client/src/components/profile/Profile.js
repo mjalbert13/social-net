@@ -6,7 +6,8 @@ import Spinner from '../layouts/Spinner';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
-import ProfileEducation from './ProfileEducation'
+import ProfileEducation from './ProfileEducation';
+import GithubRepo from './GithubRepo';
 import { getProfileByID } from '../../actions/profile';
 
 const Profile = ({ 
@@ -60,6 +61,9 @@ const Profile = ({
                             <h4>No Education</h4>
                         )}
                     </div>
+                    {profile.githubpage && (
+                        <GithubRepo username={profile.githubpage} />
+                    )}
                 </div>
             </Fragment>}
         </Fragment>
