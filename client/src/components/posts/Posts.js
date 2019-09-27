@@ -15,7 +15,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
 
     return loading ? (
          <Spinner /> 
-         ): (
+         ) : (
         <Fragment>
             <h1 className='large text-primary'>Posts</h1>
             <p className='lead'>
@@ -23,7 +23,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
             </p>
             <PostForm />
             <div className='posts'>
-                {posts.map(post =>(
+                { posts.map(post => (
                     <PostItem key={post._id}  post={post}/>
                 ))}
             </div>
