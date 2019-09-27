@@ -1,0 +1,6 @@
+{
+    "mongoURI":"mongodb+srv://mjalbert13:603Concord@devcluster-dgdov.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtToken":"SecretToken",
+    "githubClientId": "41de6b8641c783d609dc",
+    "githubSecret": "209bcbdc49304bca2cd6b4d868bb073404d2bf66"
+}
