@@ -2,19 +2,8 @@ import React, {Fragment, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './components/layouts/Navbar';
 import Landing from './components/layouts/Landing';
-import Register from './components/auth/Register';
-import PrivateRoute from './components/router/PrivateRoute'
-import Dashboard from './components/dashboard/Dashboard'
-import Login from './components/auth/Login';
-import Alert from './components/layouts/Alert';
-import CreateProfile from './components/Profile-form/CreateProfile';
-import EditProfile from './components/Profile-form/EditProfile';
-import AddExperience from './components/Profile-form/AddExperience';
-import Profiles from './components/profiles/Profiles';
-import AddEducation from './components/Profile-form/AddEducation';
-import Profile from './components/profile/Profile';
-import Posts from './components/posts/Posts';
-import Post from './components/post/Post';
+import Routes from './components/router/Routes'
+
 import {loadUser} from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import './App.css';
@@ -37,23 +26,10 @@ const App = () =>{
     <Router>
       <Fragment>
         <Navbar />
-        <Route exact path="/" component={Landing} />
-        <section className="container">
-          <Alert />
-          <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path ="/register" component={Register}/>
-            <Route exact path ="/profiles" component={Profiles}/>
-            <Route exact path ="/profile/:id" component={Profile}/>
-            <PrivateRoute exact path="/dashboard" component={Dashboard}/>
-            <PrivateRoute exact path="/create-profile" component={CreateProfile}/>
-            <PrivateRoute exact path="/edit-profile" component={EditProfile} />
-            <PrivateRoute exact path="/add-experience" component={AddExperience} />
-            <PrivateRoute exact path="/add-education" component={AddEducation} />
-            <PrivateRoute exact path="/posts" component={Posts} />
-            <PrivateRoute exact path="/post/:id" component={Post} />
-          </Switch>
-        </section>
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route component={Routes} />
+        </Switch>
       </Fragment>
     </Router>
   </Provider> 
