@@ -7,9 +7,9 @@ Full MERN Stack social network application using react and redux. Users will be 
 
 ## Usage
 - To run development locally run 
-...bash
+```bash
 npm run dev
-...
+```
 in your terminal
 
 - To se deployed version visit:
